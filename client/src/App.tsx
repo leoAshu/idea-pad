@@ -1,6 +1,15 @@
+import Header from "./components/Header"
+import Home from "./pages/Home"
+
 function App() {
   return (
-    <h1 className="text-3xl font-semibold">!deaPad</h1>
+    <>
+    <Header />
+
+    <main className='sm:px-8 px-4 py-8 w-full'>
+      <Home />
+    </main>
+    </>
   )
 }
 
