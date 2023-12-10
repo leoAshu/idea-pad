@@ -13,8 +13,8 @@ const IdeaCard = (props: IdeaCardProps) => {
   return (
     <motion.div
       key={props.index}
-      initial={{ opacity: 0, scale: 0, y: -50 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{
         duration: 0.8,
         delay: props.index * 0.1,
