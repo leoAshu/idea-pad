@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 // import upvote from "../assets/upvote.svg";
@@ -11,6 +12,8 @@ interface IdeaCardProps {
 }
 
 const IdeaCard = (props: IdeaCardProps) => {
+  const [upvotes, setUpvotes] = useState(props.idea.upvotes);
+
   return (
     <motion.div
       key={props.index}
@@ -52,12 +55,13 @@ const IdeaCard = (props: IdeaCardProps) => {
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.9 }}
           transition={{ duration: 0.2 }}
+          onClick={() => setUpvotes(upvotes + 1)}
         >
           <motion.img src={downvote} className="w-6 h-6 rotate-180" />
         </motion.button>
 
         <p className="mx-1 w-4 text-slate-700 font-semibold text-right">
-          {props.idea.upvotes}
+          {upvotes}
         </p>
 
         <motion.button
@@ -65,6 +69,7 @@ const IdeaCard = (props: IdeaCardProps) => {
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.9 }}
           transition={{ duration: 0.2 }}
+          onClick={() => setUpvotes(upvotes - 1)}
         >
           <img src={downvote} className="w-6 h-6" />
         </motion.button>
