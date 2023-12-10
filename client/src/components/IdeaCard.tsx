@@ -56,7 +56,7 @@ const IdeaCard = (props: IdeaCardProps) => {
           <motion.img src={downvote} className="w-6 h-6 rotate-180" />
         </motion.button>
 
-        <p className="mx-1 w-4 text-slate-700 font-semibold text-center">
+        <p className="mx-1 w-4 text-slate-700 font-semibold text-right">
           {props.idea.upvotes}
         </p>
 
