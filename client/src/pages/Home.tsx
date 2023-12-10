@@ -15,8 +15,8 @@ const Home = () => {
       </div>
 
       <div>
-        {ideas.map((idea) => (
-          <IdeaCard key={idea.id} idea={idea} />
+        {ideas.map((idea, index) => (
+          <IdeaCard key={idea.id} index={index} idea={idea} />
         ))}
       </div>
     </main>
