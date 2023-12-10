@@ -21,11 +21,11 @@ const IdeaCard = (props: IdeaCardProps) => {
         ease: [0.4, 0, 0.2, 1],
       }}
       whileHover={{
-        scale: 1.01,
-        transition: { ease: "easeInOut" },
+        scale: 1.05,
+        transition: { duration: 0.2, ease: "easeOut" },
       }}
     >
-      <div className="bg-white mt-2 shadow-lg hover:scale-[1.02] hover:shadow-md px-3 py-4 flex justify-start items-center transition-all ease-in">
+      <div className="bg-white mt-2 shadow-lg px-3 py-4 flex justify-start items-center transition-all ease-in">
         <div className="bg-[#F2BA52] rounded-full w-12 h-12 mx-4 flex justify-center items-center">
           <p className="font-semibold">{getInitials(props.idea.author)}</p>
         </div>
