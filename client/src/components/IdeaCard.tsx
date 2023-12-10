@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
-import upvote from "../assets/upvote.svg";
+// import upvote from "../assets/upvote.svg";
+import downvote from "../assets/downvote.svg";
 import Idea from "../models/idea";
 import { formatDateToCustomString, getInitials } from "../utils";
 
@@ -32,7 +33,7 @@ const IdeaCard = (props: IdeaCardProps) => {
       </div>
 
       <div className="flex flex-col flex-1 mx-4">
-        <p className="text-lg text-slate-600 font-semibold">
+        <p className="text-lg text-slate-700 font-semibold">
           {props.idea.title}
         </p>
         <div className="flex justify-between text-slate-500 text-xs mt-1">
@@ -45,10 +46,28 @@ const IdeaCard = (props: IdeaCardProps) => {
         </div>
       </div>
 
-      <div className="flex mx-4">
-        <img src={upvote} className="w-6" />
-        <p className="mx-1 w-4 text-center">{props.idea.upvotes}</p>
-        <img src={upvote} className="w-6 rotate-180" />
+      <div className="flex mx-4 justify-center items-center">
+        <motion.button
+          className="px-0.5 py-1"
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+        >
+          <motion.img src={downvote} className="w-6 h-6 rotate-180" />
+        </motion.button>
+
+        <p className="mx-1 w-4 text-slate-700 font-semibold text-center">
+          {props.idea.upvotes}
+        </p>
+
+        <motion.button
+          className="px-0.5 py-1"
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+        >
+          <img src={downvote} className="w-6 h-6" />
+        </motion.button>
       </div>
     </motion.div>
   );
