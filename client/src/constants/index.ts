@@ -47,7 +47,7 @@ const ideas: Idea[] = [
     upvotes: 7,
   },
   {
-    id: "5",
+    id: "6",
     date: new Date(),
     title: "Artificial Intelligence in Healthcare",
     description:
@@ -56,7 +56,7 @@ const ideas: Idea[] = [
     upvotes: 7,
   },
   {
-    id: "5",
+    id: "7",
     date: new Date(),
     title: "Artificial Intelligence in Healthcare",
     description:
@@ -65,7 +65,7 @@ const ideas: Idea[] = [
     upvotes: 7,
   },
   {
-    id: "5",
+    id: "8",
     date: new Date(),
     title: "Artificial Intelligence in Healthcare",
     description:
