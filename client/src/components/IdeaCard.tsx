@@ -17,7 +17,7 @@ const IdeaCard = (props: IdeaCardProps) => {
     return (
         <motion.div
             key={index}
-            className="bg-white mt-2 shadow-lg px-3 py-4 flex justify-start items-center border-white border-2"
+            className="bg-white mt-2 shadow-lg px-3 py-4 flex justify-start items-center border-2 border-white"
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: -20 }}
@@ -28,8 +28,8 @@ const IdeaCard = (props: IdeaCardProps) => {
             }}
             whileHover={{
                 scale: 1.03,
-                border: "2px solid #F2BA52",
-                transition: { duration: 0.2, ease: "easeIn" },
+                borderColor: "#F2BA52",
+                transition: { duration: 0.3, ease: "easeIn" },
             }}
         >
             <div className="bg-[#F2BA52] rounded-full w-12 h-12 mx-4 flex justify-center items-center">
