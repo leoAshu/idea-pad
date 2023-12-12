@@ -18,9 +18,9 @@ const IdeaCard = (props: IdeaCardProps) => {
         <motion.div
             key={index}
             className="bg-white mt-2 shadow-lg px-3 py-4 flex justify-start items-center border-white border-2"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: -20 }}
             transition={{
                 duration: 0.6,
                 delay: index * 0.1,
