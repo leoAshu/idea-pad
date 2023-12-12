@@ -33,7 +33,9 @@ const IdeaCard = (props: IdeaCardProps) => {
             }}
         >
             <div className="bg-[#F2BA52] rounded-full w-12 h-12 mx-4 flex justify-center items-center">
-                <p className="font-semibold">{getInitials(idea.author)}</p>
+                <p className="font-semibold text-white">
+                    {getInitials(idea.author)}
+                </p>
             </div>
 
             <div className="flex flex-col flex-1 mx-4">
