@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { AnimatePresence } from "framer-motion"
 
 import Idea from "../models/idea"
 import IdeaCard from "../components/IdeaCard"
@@ -7,31 +8,32 @@ import { ideas as dummyIdeas } from "../constants"
 const Home = () => {
     const [ideas, setIdeas] = useState<Idea[]>(dummyIdeas)
 
-    const handleUpvote = (ideaId: string) => {
-        setIdeas((prevIdeas) =>
-            prevIdeas.map((idea) =>
-                idea.id === ideaId
-                    ? { ...idea, upvotes: idea.upvotes + 1 }
-                    : idea,
-            ),
-        )
+    const handleUpvote = (id: string) => {
+        setIdeas((prevIdeas) => {
+            const updatedIdeas = prevIdeas.map((idea) =>
+                idea.id === id ? { ...idea, upvotes: idea.upvotes + 1 } : idea,
+            )
+
+            return sortIdeas(updatedIdeas)
+        })
     }
 
-    const handleDownvote = (ideaId: string) => {
-        setIdeas((prevIdeas) =>
-            prevIdeas.map((idea) =>
-                idea.id === ideaId
-                    ? { ...idea, upvotes: idea.upvotes - 1 }
-                    : idea,
-            ),
-        )
+    const handleDownvote = (id: string) => {
+        setIdeas((prevIdeas) => {
+            const updatedIdeas = prevIdeas.map((idea) =>
+                idea.id === id ? { ...idea, upvotes: idea.upvotes - 1 } : idea,
+            )
+
+            return sortIdeas(updatedIdeas)
+        })
+    }
+
+    const sortIdeas = (ideas: Idea[]) => {
+        return ideas.slice().sort((a, b) => b.upvotes - a.upvotes)
     }
 
     useEffect(() => {
-        const sortedIdeas = ideas.slice().sort((a, b) => b.upvotes - a.upvotes)
-        console.log(sortedIdeas)
-
-        setIdeas(sortedIdeas)
+        setIdeas(sortIdeas(ideas))
     }, [])
 
     return (
@@ -48,15 +50,17 @@ const Home = () => {
             </div>
 
             <div>
-                {ideas.map((idea, index) => (
-                    <IdeaCard
-                        key={idea.id}
-                        index={index}
-                        idea={idea}
-                        handleUpvote={handleUpvote}
-                        handleDownvote={handleDownvote}
-                    />
-                ))}
+                <AnimatePresence>
+                    {ideas.map((idea, index) => (
+                        <IdeaCard
+                            key={idea.id}
+                            index={index}
+                            idea={idea}
+                            handleUpvote={handleUpvote}
+                            handleDownvote={handleDownvote}
+                        />
+                    ))}
+                </AnimatePresence>
             </div>
         </main>
     )

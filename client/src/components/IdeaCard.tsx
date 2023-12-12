@@ -20,8 +20,9 @@ const IdeaCard = (props: IdeaCardProps) => {
             className="bg-white mt-2 shadow-lg px-3 py-4 flex justify-start items-center border-white border-2"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
             transition={{
-                duration: 0.8,
+                duration: 0.6,
                 delay: index * 0.1,
                 ease: [0.4, 0, 0.2, 1],
             }}
