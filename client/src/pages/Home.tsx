@@ -35,7 +35,20 @@ const Home = () => {
     }
 
     useEffect(() => {
+        // mock API call to get ideas
         setIdeas(sortIdeas(ideas))
+
+        const handleKeyPress = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setIsCreateIdeaActive(false)
+            }
+        }
+
+        document.addEventListener("keydown", handleKeyPress)
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyPress)
+        }
     }, [])
 
     useEffect(() => {
