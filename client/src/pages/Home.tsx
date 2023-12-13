@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
-import Idea from "../models/idea"
-import IdeaCard from "../components/IdeaCard"
 import { ideas as dummyIdeas } from "../constants"
+import Idea from "../models/idea"
+import Hero from "../components/Hero"
+import IdeaCard from "../components/IdeaCard"
 
 const Home = () => {
     const [ideas, setIdeas] = useState<Idea[]>(dummyIdeas)
@@ -38,16 +39,7 @@ const Home = () => {
 
     return (
         <main className="w-full max-w-7xl mx-auto sm:px-8 mb-16">
-            <div role="hero" className="my-12">
-                <h1 className="font-bold text-5xl">
-                    <span className="text-[#F2BA52]">!dea</span>Pad
-                </h1>
-
-                <p className="mt-2 text-lg font-medium">
-                    Note down your ideas for future reference and expand upon
-                    them!
-                </p>
-            </div>
+            <Hero />
 
             <div className="flex justify-center items-center px-3 py-4 mb-8 bg-white shadow-md">
                 <div className="flex justify-center items-center rounded-full h-12 w-12 bg-[#F2BA52] mx-4">
