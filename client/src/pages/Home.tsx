@@ -34,29 +34,24 @@ const Home = () => {
         return ideas.slice().sort((a, b) => b.upvotes - a.upvotes)
     }
 
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+            setIsCreateIdeaActive(false)
+        }
+    }
+
     useEffect(() => {
         // mock API call to get ideas
         setIdeas(sortIdeas(ideas))
 
-        const handleKeyPress = (event: KeyboardEvent) => {
-            if (event.key === "Escape") {
-                setIsCreateIdeaActive(false)
-            }
-        }
-
         document.addEventListener("keydown", handleKeyPress)
-
         return () => {
             document.removeEventListener("keydown", handleKeyPress)
         }
     }, [])
 
     useEffect(() => {
-        if (isCreateIdeaActive) {
-            document.body.style.overflow = "hidden"
-        } else {
-            document.body.style.overflow = "visible"
-        }
+        document.body.style.overflow = isCreateIdeaActive ? "hidden" : "visible"
     }, [isCreateIdeaActive])
 
     return (
