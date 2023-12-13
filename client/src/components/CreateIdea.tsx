@@ -23,6 +23,7 @@ const CreateIdea = (props: CreateIdeaProps) => {
                     whileHover={{ borderColor: "#F2BA52" }}
                     transition={{ duration: 0.3 }}
                     value={""}
+                    onChange={() => {}}
                     onClick={() => toggleCreateIdea()}
                 />
             </div>
