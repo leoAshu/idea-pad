@@ -8,6 +8,7 @@ import IdeasList from "../components/IdeasList"
 
 const Home = () => {
     const [ideas, setIdeas] = useState<Idea[]>(dummyIdeas)
+    const [isCreateIdeaActive, setIsCreateIdeaActive] = useState(false)
 
     const handleUpvote = (id: string) => {
         setIdeas((prevIdeas) => {
@@ -37,11 +38,22 @@ const Home = () => {
         setIdeas(sortIdeas(ideas))
     }, [])
 
+    useEffect(() => {
+        if (isCreateIdeaActive) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "visible"
+        }
+    }, [isCreateIdeaActive])
+
     return (
         <main className="w-full max-w-7xl mx-auto sm:px-8 mb-16">
             <Hero />
 
-            <CreateIdea />
+            <CreateIdea
+                isActive={isCreateIdeaActive}
+                toggleCreateIdea={() => setIsCreateIdeaActive((prev) => !prev)}
+            />
 
             <IdeasList
                 ideas={ideas}
