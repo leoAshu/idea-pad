@@ -10,7 +10,8 @@ interface IdeaCardProps {
 }
 
 const IdeasList = (props: IdeaCardProps) => {
-    const { ideas } = props
+    const { ideas, handleUpvote, handleDownVote } = props
+
     return (
         <AnimatePresence>
             {ideas.map((idea, index) => (
@@ -18,8 +19,8 @@ const IdeasList = (props: IdeaCardProps) => {
                     key={idea.id}
                     index={index}
                     idea={idea}
-                    handleUpvote={() => {}}
-                    handleDownvote={() => {}}
+                    handleUpvote={handleUpvote}
+                    handleDownvote={handleDownVote}
                 />
             ))}
         </AnimatePresence>
