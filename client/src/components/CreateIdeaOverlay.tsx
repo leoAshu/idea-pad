@@ -1,15 +1,34 @@
+import { FormEvent, useState } from "react"
 import { motion } from "framer-motion"
-import { FormEvent } from "react"
 
 interface CreateIdeaOverlay {
     toggleOverlay: () => void
 }
 
 const CreateIdeaOverlay = (props: CreateIdeaOverlay) => {
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+    })
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+        const { name, value } = e.target
+        setFormData((prevData) => ({ ...prevData, [name]: value }))
+    }
+
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
-        props.toggleOverlay()
+        setTimeout(() => {
+            setFormData({
+                title: "",
+                description: "",
+            })
+
+            props.toggleOverlay()
+        }, 500)
     }
 
     return (
@@ -29,9 +48,12 @@ const CreateIdeaOverlay = (props: CreateIdeaOverlay) => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
             >
                 <motion.input
-                    type="text"
                     required
+                    type="text"
+                    name="title"
                     placeholder="Title"
+                    value={formData.title}
+                    onChange={handleChange}
                     className="flex-1 py-4 px-3 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md"
                     whileHover={{ borderColor: "#F2BA52" }}
                     whileFocus={{ borderColor: "#F2BA52" }}
@@ -40,7 +62,10 @@ const CreateIdeaOverlay = (props: CreateIdeaOverlay) => {
 
                 <motion.textarea
                     rows={10}
+                    name="description"
                     placeholder="Description (Optional)"
+                    value={formData.description}
+                    onChange={handleChange}
                     className="py-4 px-3 mt-4 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md resize-none"
                     whileHover={{ borderColor: "#F2BA52" }}
                     whileFocus={{ borderColor: "#F2BA52" }}
