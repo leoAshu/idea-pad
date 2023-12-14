@@ -60,7 +60,7 @@ const Home = () => {
 
             <CreateIdea
                 isActive={isCreateIdeaActive}
-                toggleCreateIdea={() => setIsCreateIdeaActive((prev) => !prev)}
+                toggleOverlay={() => setIsCreateIdeaActive((prev) => !prev)}
             />
 
             <IdeasList
