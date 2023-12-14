@@ -28,6 +28,19 @@ const CreateIdeaOverlay = (props: CreateIdeaOverlay) => {
                     whileFocus={{ borderColor: "#F2BA52" }}
                     transition={{ duration: 0.3 }}
                 />
+
+                <motion.textarea
+                    placeholder="Description (Optional)"
+                    rows={10}
+                    className="py-4 px-3 mt-4 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md resize-none"
+                    whileHover={{ borderColor: "#F2BA52" }}
+                    whileFocus={{ borderColor: "#F2BA52" }}
+                    transition={{ duration: 0.3 }}
+                />
+
+                <button className="py-4 w-1/3 mt-4 bg-[#F2BA52] text-white font-semibold rounded-md bg-opacity-75 hover:bg-opacity-100 transition-all duration-300">
+                    Add
+                </button>
             </motion.div>
         </motion.div>
     )
