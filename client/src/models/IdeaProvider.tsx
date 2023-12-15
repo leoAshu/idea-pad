@@ -31,6 +31,24 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
         })
     }
 
+    const addIdea = (title: string, description: string) => {
+        setIdeas((prevIdeas) => {
+            const newIdea = {
+                id:
+                    prevIdeas.length > 0
+                        ? `${parseInt(prevIdeas[prevIdeas.length - 1].id) + 1}`
+                        : "1",
+                date: new Date(),
+                title,
+                description,
+                author: "Dummy User",
+                upvotes: 1,
+            }
+            prevIdeas.push(newIdea)
+            return sortIdeas(prevIdeas)
+        })
+    }
+
     useEffect(() => {
         // mock API call to get ideas
         setIdeas(sortIdeas(ideas))
@@ -38,7 +56,7 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
 
     return (
         <IdeaContext.Provider
-            value={{ ideas, setIdeas, handleUpvote, handleDownvote }}
+            value={{ ideas, setIdeas, handleUpvote, handleDownvote, addIdea }}
         >
             {children}
         </IdeaContext.Provider>

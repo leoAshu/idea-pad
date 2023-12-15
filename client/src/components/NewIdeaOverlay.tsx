@@ -1,11 +1,13 @@
 import { FormEvent, useEffect, useState } from "react"
 import { motion } from "framer-motion"
+import useIdeaContext from "../models/useIdeaContextHook"
 
 interface NewIdeaOverlay {
     closeOverlay: () => void
 }
 
 const NewIdeaOverlay = (props: NewIdeaOverlay) => {
+    const { addIdea } = useIdeaContext()
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -22,11 +24,11 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
         e.preventDefault()
 
         setTimeout(() => {
+            addIdea(formData.title, formData.description)
             setFormData({
                 title: "",
                 description: "",
             })
-
             props.closeOverlay()
         }, 500)
     }

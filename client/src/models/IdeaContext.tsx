@@ -7,6 +7,7 @@ interface IdeaContextProps {
     setIdeas: React.Dispatch<React.SetStateAction<Idea[]>>
     handleUpvote: (id: string) => void
     handleDownvote: (id: string) => void
+    addIdea: (title: string, description: string) => void
 }
 
 const IdeaContext = createContext<IdeaContextProps>({} as IdeaContextProps)
