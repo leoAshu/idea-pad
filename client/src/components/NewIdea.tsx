@@ -1,13 +1,14 @@
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import CreateIdeaOverlay from "./CreateIdeaOverlay"
 
-interface CreateIdeaProps {
-    isActive: boolean
-    toggleOverlay: () => void
-}
+import NewIdeaOverlay from "./NewIdeaOverlay"
 
-const CreateIdea = (props: CreateIdeaProps) => {
-    const { isActive, toggleOverlay } = props
+const NewIdea = () => {
+    const [isOverlayActive, setIsOverlayActive] = useState(false)
+
+    useEffect(() => {
+        document.body.style.overflow = isOverlayActive ? "hidden" : "visible"
+    }, [isOverlayActive])
 
     return (
         <>
@@ -25,13 +26,17 @@ const CreateIdea = (props: CreateIdeaProps) => {
                     transition={{ duration: 0.3 }}
                     value={""}
                     onChange={() => {}}
-                    onClick={() => toggleOverlay()}
+                    onClick={() => setIsOverlayActive(true)}
                 />
             </div>
 
-            {isActive && <CreateIdeaOverlay toggleOverlay={toggleOverlay} />}
+            {isOverlayActive && (
+                <NewIdeaOverlay
+                    closeOverlay={() => setIsOverlayActive(false)}
+                />
+            )}
         </>
     )
 }
 
-export default CreateIdea
+export default NewIdea

@@ -1,11 +1,11 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
-interface CreateIdeaOverlay {
-    toggleOverlay: () => void
+interface NewIdeaOverlay {
+    closeOverlay: () => void
 }
 
-const CreateIdeaOverlay = (props: CreateIdeaOverlay) => {
+const NewIdeaOverlay = (props: NewIdeaOverlay) => {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -27,15 +27,28 @@ const CreateIdeaOverlay = (props: CreateIdeaOverlay) => {
                 description: "",
             })
 
-            props.toggleOverlay()
+            props.closeOverlay()
         }, 500)
     }
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+            props.closeOverlay()
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeyPress)
+        return () => {
+            document.removeEventListener("keydown", handleKeyPress)
+        }
+    }, [])
 
     return (
         <motion.div
             role="background-overlay"
             className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-[25%] backdrop-blur-md z-10"
-            onClick={() => props.toggleOverlay()}
+            onClick={() => props.closeOverlay()}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
         >
@@ -83,4 +96,4 @@ const CreateIdeaOverlay = (props: CreateIdeaOverlay) => {
     )
 }
 
-export default CreateIdeaOverlay
+export default NewIdeaOverlay
