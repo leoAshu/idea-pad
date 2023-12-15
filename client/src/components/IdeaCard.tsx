@@ -27,7 +27,6 @@ const IdeaCard = (props: IdeaCardProps) => {
                 ease: [0.4, 0, 0.2, 1],
             }}
             whileHover={{
-                scale: 1.03,
                 borderColor: "#F2BA52",
                 transition: { duration: 0.3, ease: "easeIn" },
             }}
