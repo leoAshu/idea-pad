@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import Hero from "../components/Hero"
 import CreateIdea from "../components/CreateIdea"
 import IdeasList from "../components/IdeasList"
-import useIdeaContext from "../models/useIdeaContext"
+import useIdeaContext from "../models/useIdeaContextHook"
 
 const Home = () => {
     const { ideas, handleUpvote, handleDownvote } = useIdeaContext()
