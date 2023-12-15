@@ -3,16 +3,16 @@ import { motion } from "framer-motion"
 import downvote from "../assets/downvote.svg"
 import Idea from "../models/idea"
 import { formatDateToCustomString, getInitials } from "../utils"
+import useIdeaContext from "../models/useIdeaContextHook"
 
 interface IdeaCardProps {
     index: number
     idea: Idea
-    handleUpvote: (ideaId: string) => void
-    handleDownvote: (ideaId: string) => void
 }
 
 const IdeaCard = (props: IdeaCardProps) => {
-    const { idea, index, handleUpvote, handleDownvote } = props
+    const { index, idea } = props
+    const { handleUpvote, handleDownvote } = useIdeaContext()
 
     return (
         <motion.div

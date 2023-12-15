@@ -3,10 +3,8 @@ import { useEffect, useState } from "react"
 import Hero from "../components/Hero"
 import CreateIdea from "../components/CreateIdea"
 import IdeasList from "../components/IdeasList"
-import useIdeaContext from "../models/useIdeaContextHook"
 
 const Home = () => {
-    const { ideas, handleUpvote, handleDownvote } = useIdeaContext()
     const [isCreateIdeaActive, setIsCreateIdeaActive] = useState(false)
 
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -35,11 +33,7 @@ const Home = () => {
                 toggleOverlay={() => setIsCreateIdeaActive((prev) => !prev)}
             />
 
-            <IdeasList
-                ideas={ideas}
-                handleUpvote={handleUpvote}
-                handleDownVote={handleDownvote}
-            />
+            <IdeasList />
         </main>
     )
 }
