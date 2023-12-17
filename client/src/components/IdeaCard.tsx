@@ -41,10 +41,10 @@ const IdeaCard = (props: IdeaCardProps) => {
                 <p className="text-lg text-slate-700 font-semibold">
                     {idea.title}
                 </p>
-                <div className="flex justify-between text-slate-500 text-xs mt-1">
-                    <p>Created: {formatDateToCustomString(idea.date)}</p>
-                    <p>Edited: {formatDateToCustomString(idea.date)}</p>
-                </div>
+
+                <p className="text-slate-500 text-xs mt-1">
+                    Created: {formatDateToCustomString(idea.date)}
+                </p>
             </div>
 
             <div className="flex mx-4 justify-center items-center">
