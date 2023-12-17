@@ -23,7 +23,8 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
-        addIdea(formData.title, formData.description)
+        await addIdea(formData.title, formData.description)
+
         setFormData({
             title: "",
             description: "",

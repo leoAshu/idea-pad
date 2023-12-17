@@ -30,26 +30,42 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
         })
     }
 
-    const addIdea = async (title: string, description: string) => {
-        const params = new URLSearchParams()
-        params.append("title", title)
-        params.append("description", description)
+    const addIdea = async (
+        title: string,
+        description: string,
+    ): Promise<void> => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const params = new URLSearchParams()
+                params.append("title", title)
+                params.append("description", description)
 
-        const response = await fetch("http://localhost:3000/api/ideas", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: params.toString(),
+                const response = await fetch(
+                    "http://localhost:3000/api/ideas",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: params.toString(),
+                    },
+                )
+
+                if (!response.ok) {
+                    console.error(`HTTP Error: ${response.status}`)
+                    reject(`HTTP Error: ${response.status}`)
+                    return
+                }
+
+                const data: Idea = (await response.json())["idea"]
+                setIdeas((prevIdeas) => [...prevIdeas, data])
+
+                resolve()
+            } catch (error) {
+                console.error("Error during fetch:", error)
+                reject(error)
+            }
         })
-
-        if (!response.ok) {
-            console.log(`HTTP Error: ${response.status}`)
-            return
-        }
-
-        const data: Idea = (await response.json())["idea"]
-        setIdeas((prevIdeas) => [...prevIdeas, data])
     }
 
     useEffect(() => {
