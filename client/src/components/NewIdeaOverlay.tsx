@@ -20,17 +20,15 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
-        setTimeout(() => {
-            addIdea(formData.title, formData.description)
-            setFormData({
-                title: "",
-                description: "",
-            })
-            props.closeOverlay()
-        }, 500)
+        addIdea(formData.title, formData.description)
+        setFormData({
+            title: "",
+            description: "",
+        })
+        props.closeOverlay()
     }
 
     const handleKeyPress = (event: KeyboardEvent) => {
