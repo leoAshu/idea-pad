@@ -31,6 +31,7 @@ app.post("/api/ideas", (req, res) => {
         date: new Date().toUTCString(),
         title,
         description,
+        author: "Test Author",
         upvotes: 1,
     }
     ideas.push(newIdea)
