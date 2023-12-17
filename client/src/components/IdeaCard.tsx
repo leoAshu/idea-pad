@@ -42,14 +42,8 @@ const IdeaCard = (props: IdeaCardProps) => {
                     {idea.title}
                 </p>
                 <div className="flex justify-between text-slate-500 text-xs mt-1">
-                    <p>
-                        Created:{" "}
-                        {formatDateToCustomString(idea.date.toUTCString())}
-                    </p>
-                    <p>
-                        Edited:{" "}
-                        {formatDateToCustomString(idea.date.toUTCString())}
-                    </p>
+                    <p>Created: {formatDateToCustomString(idea.date)}</p>
+                    <p>Edited: {formatDateToCustomString(idea.date)}</p>
                 </div>
             </div>
 

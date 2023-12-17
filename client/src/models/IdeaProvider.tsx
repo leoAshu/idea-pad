@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useState } from "react"
 
 import Idea, { sortIdeas } from "./idea"
-import { ideas as dummyIdeas } from "../constants"
 import IdeaContext from "./IdeaContext"
 
 interface IdeaProviderProps {
@@ -9,7 +8,7 @@ interface IdeaProviderProps {
 }
 
 const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
-    const [ideas, setIdeas] = useState<Idea[]>(dummyIdeas)
+    const [ideas, setIdeas] = useState<Idea[]>([])
 
     const handleUpvote = (id: string) => {
         setIdeas((prevIdeas) => {
@@ -31,27 +30,19 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
         })
     }
 
-    const addIdea = (title: string, description: string) => {
-        setIdeas((prevIdeas) => {
-            const newIdea = {
-                id:
-                    prevIdeas.length > 0
-                        ? `${parseInt(prevIdeas[prevIdeas.length - 1].id) + 1}`
-                        : "1",
-                date: new Date(),
-                title,
-                description,
-                author: "Dummy User",
-                upvotes: 1,
-            }
-            prevIdeas.push(newIdea)
-            return sortIdeas(prevIdeas)
-        })
-    }
+    const addIdea = (title: string, description: string) => {}
 
     useEffect(() => {
-        // mock API call to get ideas
-        setIdeas(sortIdeas(ideas))
+        const fetchIdeas = async () => {
+            const response = await fetch("http://localhost:3000/api/ideas", {
+                method: "GET",
+            })
+
+            const data: Idea[] = (await response.json())["ideas"]
+            setIdeas(sortIdeas(data))
+        }
+
+        fetchIdeas()
     }, [])
 
     return (

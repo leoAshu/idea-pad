@@ -1,6 +1,6 @@
 interface Idea {
     id: string
-    date: Date
+    date: string
     title: string
     description: string
     author: string
