@@ -49,7 +49,7 @@ const IdeaCard = (props: IdeaCardProps) => {
                     transition={{ duration: 0.2 }}
                     onClick={() => handleVote(idea.id, 1)}
                 >
-                    <motion.img src={downvote} className="w-6 h-6 rotate-180" />
+                    <img src={downvote} className="w-6 h-6 rotate-180" />
                 </motion.button>
 
                 <p className="mx-1 w-4 text-slate-700 font-semibold text-right">{idea.upvotes}</p>
