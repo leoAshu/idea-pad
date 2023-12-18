@@ -1,6 +1,6 @@
-import { createContext } from "react"
+import { createContext } from 'react'
 
-import Idea from "./idea"
+import Idea from './idea'
 
 interface IdeaContextProps {
     ideas: Idea[]

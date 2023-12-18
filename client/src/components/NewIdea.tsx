@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
-import NewIdeaOverlay from "./NewIdeaOverlay"
+import NewIdeaOverlay from './NewIdeaOverlay'
 
 const NewIdea = () => {
     const [isOverlayActive, setIsOverlayActive] = useState(false)
 
     useEffect(() => {
-        document.body.style.overflow = isOverlayActive ? "hidden" : "visible"
+        document.body.style.overflow = isOverlayActive ? 'hidden' : 'visible'
     }, [isOverlayActive])
 
     return (
@@ -22,19 +22,15 @@ const NewIdea = () => {
                     placeholder="Note an Idea"
                     className="flex-1 py-4 pl-4 mr-4 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md"
                     autoFocus={false}
-                    whileHover={{ borderColor: "#F2BA52" }}
+                    whileHover={{ borderColor: '#F2BA52' }}
                     transition={{ duration: 0.3 }}
-                    value={""}
+                    value={''}
                     onChange={() => {}}
                     onClick={() => setIsOverlayActive(true)}
                 />
             </div>
 
-            {isOverlayActive && (
-                <NewIdeaOverlay
-                    closeOverlay={() => setIsOverlayActive(false)}
-                />
-            )}
+            {isOverlayActive && <NewIdeaOverlay closeOverlay={() => setIsOverlayActive(false)} />}
         </>
     )
 }

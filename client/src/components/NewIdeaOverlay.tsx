@@ -1,6 +1,6 @@
-import { FormEvent, useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import useIdeaContext from "../models/useIdeaContextHook"
+import { FormEvent, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import useIdeaContext from '../models/useIdeaContextHook'
 
 interface NewIdeaOverlay {
     closeOverlay: () => void
@@ -9,13 +9,11 @@ interface NewIdeaOverlay {
 const NewIdeaOverlay = (props: NewIdeaOverlay) => {
     const { addIdea } = useIdeaContext()
     const [formData, setFormData] = useState({
-        title: "",
-        description: "",
+        title: '',
+        description: '',
     })
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target
         setFormData((prevData) => ({ ...prevData, [name]: value }))
     }
@@ -26,22 +24,22 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
         await addIdea(formData.title, formData.description)
 
         setFormData({
-            title: "",
-            description: "",
+            title: '',
+            description: '',
         })
         props.closeOverlay()
     }
 
     const handleKeyPress = (event: KeyboardEvent) => {
-        if (event.key === "Escape") {
+        if (event.key === 'Escape') {
             props.closeOverlay()
         }
     }
 
     useEffect(() => {
-        document.addEventListener("keydown", handleKeyPress)
+        document.addEventListener('keydown', handleKeyPress)
         return () => {
-            document.removeEventListener("keydown", handleKeyPress)
+            document.removeEventListener('keydown', handleKeyPress)
         }
     }, [])
 
@@ -69,8 +67,8 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
                     value={formData.title}
                     onChange={handleChange}
                     className="flex-1 py-4 px-3 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md"
-                    whileHover={{ borderColor: "#F2BA52" }}
-                    whileFocus={{ borderColor: "#F2BA52" }}
+                    whileHover={{ borderColor: '#F2BA52' }}
+                    whileFocus={{ borderColor: '#F2BA52' }}
                     transition={{ duration: 0.3 }}
                 />
 
@@ -81,8 +79,8 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
                     value={formData.description}
                     onChange={handleChange}
                     className="py-4 px-3 mt-4 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md resize-none"
-                    whileHover={{ borderColor: "#F2BA52" }}
-                    whileFocus={{ borderColor: "#F2BA52" }}
+                    whileHover={{ borderColor: '#F2BA52' }}
+                    whileFocus={{ borderColor: '#F2BA52' }}
                     transition={{ duration: 0.3 }}
                 />
 

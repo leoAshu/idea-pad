@@ -1,6 +1,6 @@
-import Hero from "../components/Hero"
-import NewIdea from "../components/NewIdea"
-import IdeasList from "../components/IdeasList"
+import Hero from '../components/Hero'
+import NewIdea from '../components/NewIdea'
+import IdeasList from '../components/IdeasList'
 
 const Home = () => {
     return (

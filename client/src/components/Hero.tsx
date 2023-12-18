@@ -5,9 +5,7 @@ const Hero = () => {
                 <span className="text-[#F2BA52]">!dea</span>Pad
             </h1>
 
-            <p className="mt-2 text-lg font-medium">
-                Note down your ideas for future reference and expand upon them!
-            </p>
+            <p className="mt-2 text-lg font-medium">Note down your ideas for future reference and expand upon them!</p>
         </div>
     )
 }
