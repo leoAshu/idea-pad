@@ -5,8 +5,7 @@ import Idea from "./idea"
 interface IdeaContextProps {
     ideas: Idea[]
     setIdeas: React.Dispatch<React.SetStateAction<Idea[]>>
-    handleUpvote: (id: string) => void
-    handleDownvote: (id: string) => void
+    handleVote: (id: string, vote: number) => Promise<void>
     addIdea: (title: string, description: string) => Promise<void>
 }
 

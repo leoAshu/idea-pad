@@ -12,7 +12,7 @@ interface IdeaCardProps {
 
 const IdeaCard = (props: IdeaCardProps) => {
     const { index, idea } = props
-    const { handleUpvote, handleDownvote } = useIdeaContext()
+    const { handleVote } = useIdeaContext()
 
     return (
         <motion.div
@@ -53,7 +53,7 @@ const IdeaCard = (props: IdeaCardProps) => {
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ duration: 0.2 }}
-                    onClick={() => handleUpvote(idea.id)}
+                    onClick={() => handleVote(idea.id, 1)}
                 >
                     <motion.img src={downvote} className="w-6 h-6 rotate-180" />
                 </motion.button>
@@ -67,7 +67,7 @@ const IdeaCard = (props: IdeaCardProps) => {
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ duration: 0.2 }}
-                    onClick={() => handleDownvote(idea.id)}
+                    onClick={() => handleVote(idea.id, -1)}
                 >
                     <img src={downvote} className="w-6 h-6" />
                 </motion.button>

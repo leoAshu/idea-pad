@@ -10,23 +10,49 @@ interface IdeaProviderProps {
 const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
     const [ideas, setIdeas] = useState<Idea[]>([])
 
-    const handleUpvote = (id: string) => {
-        setIdeas((prevIdeas) => {
-            const updatedIdeas = prevIdeas.map((idea) =>
-                idea.id === id ? { ...idea, upvotes: idea.upvotes + 1 } : idea,
-            )
+    const handleVote = async (id: string, vote: number): Promise<void> => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const ideaIndex = ideas.findIndex((idea) => idea.id === id)
+                if (ideaIndex === -1) {
+                    reject(new Error("Idea not found."))
+                    return
+                }
 
-            return sortIdeas(updatedIdeas)
-        })
-    }
+                const updatedUpvotes = ideas[ideaIndex].upvotes + vote
+                const params = new URLSearchParams()
+                params.append("upvotes", updatedUpvotes.toString())
 
-    const handleDownvote = (id: string) => {
-        setIdeas((prevIdeas) => {
-            const updatedIdeas = prevIdeas.map((idea) =>
-                idea.id === id ? { ...idea, upvotes: idea.upvotes - 1 } : idea,
-            )
+                const response = await fetch(
+                    `http://localhost:3000/api/ideas/${id}`,
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: params.toString(),
+                    },
+                )
 
-            return sortIdeas(updatedIdeas)
+                if (!response.ok) {
+                    console.error(`HTTP Error: ${response.status}`)
+                    reject(new Error(`HTTP Error: ${response.status}`))
+                    return
+                }
+
+                const updatedIdea: Idea = (await response.json())["idea"]
+
+                setIdeas((prevIdeas) => {
+                    const updatedIdeas = prevIdeas.map((idea) =>
+                        idea.id === id ? updatedIdea : idea,
+                    )
+                    return sortIdeas(updatedIdeas)
+                })
+                resolve()
+            } catch (error) {
+                console.error("Error:", error)
+                reject(error)
+            }
         })
     }
 
@@ -57,8 +83,8 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
                     return
                 }
 
-                const data: Idea = (await response.json())["idea"]
-                setIdeas((prevIdeas) => [...prevIdeas, data])
+                const newIdea: Idea = (await response.json())["idea"]
+                setIdeas((prevIdeas) => [...prevIdeas, newIdea])
 
                 resolve()
             } catch (error) {
@@ -87,9 +113,7 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
     }, [])
 
     return (
-        <IdeaContext.Provider
-            value={{ ideas, setIdeas, handleUpvote, handleDownvote, addIdea }}
-        >
+        <IdeaContext.Provider value={{ ideas, setIdeas, handleVote, addIdea }}>
             {children}
         </IdeaContext.Provider>
     )
