@@ -1,10 +1,10 @@
-const express = require("express")
-const bodyParser = require("body-parser")
-const cors = require("cors")
-const dotenv = require("dotenv")
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const dotenv = require('dotenv')
 
-const connectDB = require("./db/connect")
-const ideasRouter = require("./routes/ideasRoute")
+const connectDB = require('./db/connect')
+const ideasRouter = require('./routes/ideasRoute')
 
 dotenv.config()
 
@@ -14,10 +14,10 @@ const PORT = 3000
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use("/api/ideas", ideasRouter)
+app.use('/api/ideas', ideasRouter)
 
-app.get("/api", (req, res) => {
-    res.status(200).json({ message: "Server is up!" })
+app.get('/api', (req, res) => {
+    res.status(200).json({ message: 'Server is up!' })
 })
 
 const startServer = async () => {
