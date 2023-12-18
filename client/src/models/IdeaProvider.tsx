@@ -23,7 +23,7 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
                 const params = new URLSearchParams()
                 params.append('upvotes', updatedUpvotes.toString())
 
-                const response = await fetch(`http://localhost:3000/api/ideas/${id}`, {
+                const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/ideas/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -58,7 +58,7 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
                 params.append('title', title)
                 params.append('description', description)
 
-                const response = await fetch('http://localhost:3000/api/ideas', {
+                const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/ideas`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -85,7 +85,7 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
 
     useEffect(() => {
         const fetchIdeas = async () => {
-            const response = await fetch('http://localhost:3000/api/ideas', {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/ideas`, {
                 method: 'GET',
             })
 
