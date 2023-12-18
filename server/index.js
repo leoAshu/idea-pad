@@ -1,8 +1,13 @@
 const express = require("express")
 const bodyParser = require("body-parser")
-const cors = require("cors")
 const { v4: uuidv4 } = require("uuid")
+const cors = require("cors")
+const dotenv = require("dotenv")
+
+dotenv.config()
+
 const { ideas: dummyIdeas } = require("./ideas")
+const connectDB = require("./db/connect")
 
 const app = express()
 const PORT = 3000
@@ -38,6 +43,15 @@ app.post("/api/ideas", (req, res) => {
     res.status(200).json({ idea: newIdea })
 })
 
-app.listen(PORT, () => {
-    console.log(`Server started at port: ${PORT}`)
-})
+const startServer = async () => {
+    try {
+        connectDB(process.env.DB_URL)
+        app.listen(PORT, () => {
+            console.log(`Server started at port: ${PORT}`)
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+startServer()
