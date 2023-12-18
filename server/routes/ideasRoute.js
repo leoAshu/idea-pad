@@ -28,4 +28,18 @@ router.route('/').post(async (req, res) => {
     res.status(200).json({ idea: newIdea })
 })
 
+router.route('/:id').put(async (req, res) => {
+    const id = req.params.id
+    const updateData = req.body
+
+    const updatedIdea = await IdeaModel.findOneAndUpdate({ id: id }, updateData, { new: true })
+
+    if (!updatedIdea) {
+        res.status(404).json({ error: 'Idea not found.' })
+        return
+    }
+
+    res.status(200).json({ idea: updatedIdea })
+})
+
 module.exports = router
