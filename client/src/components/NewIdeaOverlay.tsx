@@ -89,7 +89,7 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
                     className="py-4 w-1/3 mt-4 text-white font-semibold rounded-md"
                     animate={{ backgroundColor: '#F2BA52', opacity: 0.8 }}
                     whileHover={{ backgroundColor: '#F2BA52', opacity: 1 }}
-                    whileTap={{ backgroundColor: '#F2BA52', opacity: 0.6 }}
+                    whileTap={{ backgroundColor: '#F2BA52', scale: 0.95 }}
                     transition={{ duration: 0.3 }}
                 >
                     Add
