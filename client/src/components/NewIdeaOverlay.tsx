@@ -84,12 +84,16 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
                     transition={{ duration: 0.3 }}
                 />
 
-                <button
+                <motion.button
                     type="submit"
-                    className="py-4 w-1/3 mt-4 bg-[#F2BA52] text-white font-semibold rounded-md bg-opacity-75 hover:bg-opacity-100 transition-all duration-300"
+                    className="py-4 w-1/3 mt-4 text-white font-semibold rounded-md"
+                    animate={{ backgroundColor: '#F2BA52', opacity: 0.8 }}
+                    whileHover={{ backgroundColor: '#F2BA52', opacity: 1 }}
+                    whileTap={{ backgroundColor: '#F2BA52', opacity: 0.6 }}
+                    transition={{ duration: 0.3 }}
                 >
                     Add
-                </button>
+                </motion.button>
             </motion.form>
         </motion.div>
     )
