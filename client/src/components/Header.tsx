@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+
+import useAuthContext from '../hooks/useAuthContextHook'
 
 const Header = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const { isLoggedIn, setIsLoggedIn } = useAuthContext()
     return (
         <header className="w-full flex justify-between items-center bg-white sm:px-8 px-4 shadow-md sticky top-0 z-10 select-none">
             <div className="py-5 text-4xl font-bold">
@@ -13,6 +14,7 @@ const Header = () => {
                 <motion.button
                     className="px-6 py-2 text-lg font-semibold rounded-md"
                     onClick={() => setIsLoggedIn(true)}
+                    initial={{ backgroundColor: 'rgba(242, 186, 82, 0.8)', color: 'white' }}
                     animate={{ backgroundColor: 'rgba(242, 186, 82, 0.8)', color: 'white' }}
                     whileHover={{ backgroundColor: 'rgba(242, 186, 82, 1)', color: 'white' }}
                     whileTap={{ backgroundColor: 'rgba(242, 186, 82, 1)', color: 'white', scale: 0.95 }}
