@@ -4,6 +4,7 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 
 const connectDB = require('./db/connect')
+const authRouter = require('./routes/authRoute')
 const ideasRouter = require('./routes/ideasRoute')
 
 dotenv.config()
@@ -14,6 +15,7 @@ const PORT = 3000
 app.use(cors())
 app.use(bodyParser.json())
 
+app.use('/api/auth', authRouter)
 app.use('/api/ideas', ideasRouter)
 
 app.get('/api', (req, res) => {
