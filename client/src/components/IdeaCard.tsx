@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import downvote from '../assets/downvote.svg'
 import Idea from '../models/idea'
 import { formatDateToCustomString, getInitials } from '../utils'
-import useIdeaContext from '../models/useIdeaContextHook'
+import useIdeaContext from '../hooks/useIdeaContextHook'
 
 interface IdeaCardProps {
     index: number

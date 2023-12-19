@@ -1,6 +1,6 @@
 import Header from './components/Header'
 import Home from './pages/Home'
-import IdeaProvider from './models/IdeaProvider'
+import IdeaProvider from './providers/idea/IdeaProvider'
 
 function App() {
     return (

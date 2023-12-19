@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import useIdeaContext from '../models/useIdeaContextHook'
+import useIdeaContext from '../hooks/useIdeaContextHook'
 
 interface NewIdeaOverlay {
     closeOverlay: () => void

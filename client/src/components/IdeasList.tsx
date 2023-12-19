@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
 
 import IdeaCard from './IdeaCard'
-import useIdeaContext from '../models/useIdeaContextHook'
+import useIdeaContext from '../hooks/useIdeaContextHook'
 
 const IdeasList = () => {
     const { ideas } = useIdeaContext()

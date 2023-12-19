@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import IdeaContext from './IdeaContext'
+import IdeaContext from '../providers/idea/IdeaContext'
 
 const useIdeaContext = () => {
     const context = useContext(IdeaContext)

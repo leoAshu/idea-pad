@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import Idea from './idea'
+import Idea from '../../models/idea'
 
 interface IdeaContextProps {
     ideas: Idea[]

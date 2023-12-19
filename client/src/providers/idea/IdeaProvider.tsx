@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react'
 
-import Idea, { sortIdeas } from './idea'
+import Idea, { sortIdeas } from '../../models/idea'
 import IdeaContext from './IdeaContext'
 
 interface IdeaProviderProps {
