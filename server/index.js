@@ -3,9 +3,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
 
-const connectDB = require('./db/connect')
-const authRouter = require('./routes/authRoute')
-const ideasRouter = require('./routes/ideasRoute')
+const connectDB = require('./src/db/db.connect')
+const authRouter = require('./src/routes/auth.route')
+const ideasRouter = require('./src/routes/ideas.route')
 
 dotenv.config()
 

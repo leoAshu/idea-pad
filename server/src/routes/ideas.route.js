@@ -1,7 +1,7 @@
 const express = require('express')
 const { v4: uuidv4 } = require('uuid')
 
-const IdeaModel = require('../db/models/idea')
+const IdeaModel = require('../models/idea.model')
 
 const router = express.Router()
 
