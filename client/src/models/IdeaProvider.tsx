@@ -20,15 +20,13 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
                 }
 
                 const updatedUpvotes = ideas[ideaIndex].upvotes + vote
-                const params = new URLSearchParams()
-                params.append('upvotes', updatedUpvotes.toString())
 
                 const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/ideas/${id}`, {
                     method: 'PUT',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
                     },
-                    body: params.toString(),
+                    body: JSON.stringify({ upvotes: updatedUpvotes }),
                 })
 
                 if (!response.ok) {
@@ -54,16 +52,12 @@ const IdeaProvider: React.FC<IdeaProviderProps> = ({ children }) => {
     const addIdea = async (title: string, description: string): Promise<void> => {
         return new Promise(async (resolve, reject) => {
             try {
-                const params = new URLSearchParams()
-                params.append('title', title)
-                params.append('description', description)
-
                 const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/ideas`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
                     },
-                    body: params.toString(),
+                    body: JSON.stringify({ title, description }),
                 })
 
                 if (!response.ok) {
