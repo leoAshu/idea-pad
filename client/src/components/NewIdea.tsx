@@ -20,9 +20,9 @@ const NewIdea = () => {
                 <motion.input
                     type="text"
                     placeholder="Note an Idea"
-                    className="flex-1 py-2 md:py-4 pl-2 md:pl-4 mr-2 md:mr-4 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md"
+                    className="flex-1 py-2 md:py-4 pl-2 md:pl-4 mr-2 md:mr-4 bg-[#F7F7F7] outline-none border-0 md:border-2 border-[#F7F7F7] rounded-md"
                     autoFocus={false}
-                    whileHover={{ borderColor: '#F2BA52' }}
+                    whileHover={window.innerWidth >= 768 ? { borderColor: '#F2BA52' } : {}}
                     transition={{ duration: 0.3 }}
                     value={''}
                     onChange={() => {}}

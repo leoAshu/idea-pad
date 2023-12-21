@@ -26,10 +26,14 @@ const IdeaCard = (props: IdeaCardProps) => {
                 delay: index * 0.1,
                 ease: [0.4, 0, 0.2, 1],
             }}
-            whileHover={{
-                borderColor: '#F2BA52',
-                transition: { duration: 0.3, ease: 'easeIn' },
-            }}
+            whileHover={
+                window.innerWidth >= 768
+                    ? {
+                          borderColor: '#F2BA52',
+                          transition: { duration: 0.3, ease: 'easeIn' },
+                      }
+                    : {}
+            }
         >
             <div className="bg-[#F2BA52] rounded-full w-8 h-8 md:w-12 md:h-12 mx-2 md:mx-4 flex justify-center items-center">
                 <p className="text-white text-xs md:text-base font-black md:font-semibold">
@@ -47,23 +51,23 @@ const IdeaCard = (props: IdeaCardProps) => {
 
             <div className="flex mx-2 md:mx-4 justify-center items-center">
                 <motion.button
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={window.innerWidth >= 768 ? { scale: 1.15 } : {}}
+                    whileTap={window.innerWidth >= 768 ? { scale: 0.9 } : {}}
                     transition={{ duration: 0.2 }}
                     onClick={() => handleVote(idea.id, 1)}
                 >
-                    <img src={downvote} className="w-4 md:w-6 h-4 md:h-6 rotate-180" />
+                    <img src={downvote} className="w-4 md:w-6 h-4 md:h-6 rotate-180" draggable={false} />
                 </motion.button>
 
                 <p className="mx-1 w-4 text-slate-700 font-semibold text-right text-xs md:text-base">{idea.upvotes}</p>
 
                 <motion.button
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={window.innerWidth >= 768 ? { scale: 1.15 } : {}}
+                    whileTap={window.innerWidth >= 768 ? { scale: 0.9 } : {}}
                     transition={{ duration: 0.2 }}
                     onClick={() => handleVote(idea.id, -1)}
                 >
-                    <img src={downvote} className="w-4 md:w-6 h-4 md:h-6" />
+                    <img src={downvote} className="w-4 md:w-6 h-4 md:h-6" draggable={false} />
                 </motion.button>
             </div>
         </motion.div>

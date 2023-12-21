@@ -67,7 +67,7 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
                     value={formData.title}
                     onChange={handleChange}
                     className="flex-1 py-2 md:py-4 px-3 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md"
-                    whileHover={{ borderColor: '#F2BA52' }}
+                    whileHover={window.innerWidth >= 768 ? { borderColor: '#F2BA52' } : {}}
                     whileFocus={{ borderColor: '#F2BA52' }}
                     transition={{ duration: 0.3 }}
                 />
@@ -79,7 +79,7 @@ const NewIdeaOverlay = (props: NewIdeaOverlay) => {
                     value={formData.description}
                     onChange={handleChange}
                     className="py-2 md:py-4 px-3 mt-2 md:mt-4 bg-[#F7F7F7] outline-none border-2 border-[#F7F7F7] rounded-md resize-none"
-                    whileHover={{ borderColor: '#F2BA52' }}
+                    whileHover={window.innerWidth >= 768 ? { borderColor: '#F2BA52' } : {}}
                     whileFocus={{ borderColor: '#F2BA52' }}
                     transition={{ duration: 0.3 }}
                 />
