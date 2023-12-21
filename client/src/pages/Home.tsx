@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <Header />
-            <main className="px-4 sm:px-8 mb-16 w-full max-w-7xl mx-auto select-none">
+            <main className="px-4 md:px-8 mb-16 w-full max-w-7xl mx-auto select-none">
                 <Hero />
                 <NewIdea />
                 <IdeasList />
